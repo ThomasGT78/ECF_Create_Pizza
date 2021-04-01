@@ -20,16 +20,25 @@ class PizzaType extends AbstractType
         $builder
             ->add('pizza_name',TextType::class, ["label" => "Nom de la Pizza"])
             ->add('pizza_base', EntityType::class, [
+                "label" => "Base de la Pizza",
                 "class" => Base::class,
-                "choice_label" => 'base_name'
+                "choice_label" => function ($size) {
+                    return $size->getBaseName() . " - " . $size->getBasePrice() ."€";
+                }
             ])
             ->add('pizza_size', EntityType::class, [
+                "label" => "Taille de la Pizza",
                 "class" => Size::class,
-                "choice_label" => 'size_name'
+                "choice_label" => function ($size) {
+                    return $size->getSizeName() . " - " . $size->getSizePrice() ."€";
+                }
             ])
             ->add('pizza_ingredients', EntityType::class, [
+                "label" => "Choix Ingrédients",
                 "class" => Ingredient::class,
-                "choice_label" => 'ingredient_name',
+                "choice_label" => function ($ingredient) {
+                    return $ingredient->getIngredientName() . " - " . $ingredient->getIngredientPrice() ."€";
+                },
                 "multiple" => true,
                 "expanded" => true
             ])

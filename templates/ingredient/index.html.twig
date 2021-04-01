@@ -1,25 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ingredient index{% endblock %}
+{% block title %}Liste des ingrédients{% endblock %}
 
 {% block body %}
-    <h1>Ingredient index</h1>
+    <h1>Liste des ingrédients</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Ingredient_name</th>
-                <th>Ingredient_price</th>
-                <th>Vegetarian</th>
+                <th>Dénomination</th>
+                <th>prix</th>
+                <th>Vegetarien</th>
                 <th>Vegan</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for ingredient in ingredients %}
             <tr>
-                <td>{{ ingredient.id }}</td>
                 <td>{{ ingredient.ingredientName }}</td>
                 <td>{{ ingredient.ingredientPrice }}</td>
                 <td>{{ ingredient.vegetarian ? 'Yes' : 'No' }}</td>

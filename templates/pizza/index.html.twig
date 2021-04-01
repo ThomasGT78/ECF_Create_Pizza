@@ -1,25 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Pizza index{% endblock %}
+{% block title %}Listes des Pizzas{% endblock %}
 
 {% block body %}
-    <h1>Pizza index</h1>
+    <h1>Listes des Pizzas</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nom</th>
+                <th>Taille</th>
+                <th>Base</th>
                 <th>Prix</th>
                 <th>Végétarien/Vegan</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for pizza in pizzas %}
             <tr>
-                <td>{{ pizza.id }}</td>
                 <td>{{ pizza.pizzaName }}</td>
+                <td>{{ pizza.pizzaSize.sizeName }}</td>
+                <td>{{ pizza.pizzaBase.baseName }}</td>
                 <td>{{ pizza.pizzaPrice }}</td>
                 <td>{{ pizza.isVegiOrVegan }}</td>
                 <td>
@@ -33,6 +35,7 @@
             </tr>
         {% endfor %}
         </tbody>
+
     </table>
 
     <a class="btn btn-primary" href="{{ path('pizza_new') }}">Create new</a>
