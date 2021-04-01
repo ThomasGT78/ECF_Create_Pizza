@@ -22,11 +22,12 @@
                 <td>{{ pizza.pizzaName }}</td>
                 <td>{{ pizza.pizzaSize.sizeName }}</td>
                 <td>{{ pizza.pizzaBase.baseName }}</td>
-                <td>{{ pizza.pizzaPrice }}</td>
+                <td>{{ pizza.pizzaPrice }} €</td>
                 <td>{{ pizza.isVegiOrVegan }}</td>
-                <td>
-                    <a class="btn btn-success" href="{{ path('pizza_show', {'id': pizza.id}) }}">show</a>
-                    <a class="btn btn-warning"href="{{ path('pizza_edit', {'id': pizza.id}) }}">edit</a>
+                <td class="flex">
+                    <div><a class="btn btn-success" href="{{ path('pizza_show', {'id': pizza.id}) }}">show</a></div>
+                    <div><a class="btn btn-warning" href="{{ path('pizza_edit', {'id': pizza.id}) }}">edit</a></div>
+                    {{ include('pizza/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}

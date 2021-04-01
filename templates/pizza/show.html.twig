@@ -3,24 +3,28 @@
 {% block title %}Pizza{% endblock %}
 
 {% block body %}
-    <h1>Pizza</h1>
 
     <table class="table">
-        <tbody>
+
+        <thead>
             <tr>
-                <th>Pizza_name</th>
-                <td>{{ pizza.pizzaName }}</td>
+                <th class="center big">Pizza {{ pizza.pizzaName }}</th>
+                <th class="center big">{{ pizza.pizzaPrice }} €</th>
             </tr>
+        </thead>
+        <tbody class="center">
             <tr>
                 <th>Base</th>
-                <td>{{ pizza.pizzaBase.baseName }}</td>
+                <th>Taille</th>
             </tr>
             <tr>
-                <th>Taille</th>
+                <td>{{ pizza.pizzaBase.baseName }}</td>
                 <td>{{ pizza.pizzaSize.sizeName }}</td>
             </tr>
+        </tbody>
+        <tbody>
             <tr>
-                <th colspan="2">ingrédients :</th>
+                <th>ingrédients :</th>
             </tr>
             {% for ingredient in pizza.pizzaIngredients %}
                 <tr><td>{{ ingredient.ingredientName }}</td></tr>
@@ -28,9 +32,10 @@
         </tbody>
     </table>
 
-    <a href="{{ path('pizza_index') }}">back to list</a>
+    <div class="flex flex-center">
+        {#    <a href="{{ path('pizza_index') }}">back to list</a>#}
+        <div><a class="btn btn-warning" href="{{ path('pizza_edit', {'id': pizza.id}) }}">Modifier</a></div>
 
-    <a href="{{ path('pizza_edit', {'id': pizza.id}) }}">edit</a>
+        {{ include('pizza/_delete_form.html.twig') }}
 
-    {{ include('pizza/_delete_form.html.twig') }}
 {% endblock %}

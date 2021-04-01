@@ -1,5 +1,60 @@
+
 {{ form_start(form) }}
+
     {{ form_widget(form) }}
-    {{ pizza.pizzaPrice }}
-    <button class="btn btn-primary btn-save">{{ button_label|default('Save') }}</button>
+    <br>
+
+    <h3>Prix de la pizza:  </h3>
+<div class="flex">
+    <div><button class="btn btn-primary">{{ button_label|default('Save') }}</button></div>
+
+    <script>
+        // Récup Base ID
+        var base = document.getElementById("pizza_pizza_base");
+        var size = document.getElementById("pizza_pizza_size");
+        var ingredientDiv = document.getElementById("pizza_pizza_ingredients");
+        var ingredients = ingredientDiv.getElementsByTagName("input");
+        var ingredientList = ingredientDiv.childNodes;
+        // console.log(ingredientList.length);
+
+        function getBasePrice () {
+            console.log(base.value);
+            var baseId = base.value;
+            return baseId;
+        }
+        function getSizePrice () {
+            console.log(size.value);
+            var sizeId = size.value;
+            return sizeId;
+        }
+        function getIngredientPrice () {
+            // tableau contenant la liste des id des checkbox checked
+            var tabIngredientPrice = [];
+
+            console.log("OK")
+            // boucle sur chaque checkbox des ingrédients pour vérifier s'ils sont coché
+            // puis récupérer leur id et les ajouter au tableau
+            for (var i = 0; i < ingredientList.length; i++) {
+                var ingredientId = document.getElementById("pizza_pizza_size_" + i)
+                if (ingredientId.checked){
+                    tabIngredientPrice += ingredientId.value;
+                }
+            }
+            for (var i = 0; i < tabIngredientPrice.length; i++) {
+                console.log(tabIngredientPrice[i]);
+            }
+            return tabIngredientPrice;
+        }
+
+        base.onchange = getBasePrice;
+        size.onchange = getSizePrice;
+        ingredients.onchange = getIngredientPrice;
+
+        // console.log(base);
+
+        // var getBasePrice = getBasePrice();
+    </script>
 {{ form_end(form) }}
+
+
+

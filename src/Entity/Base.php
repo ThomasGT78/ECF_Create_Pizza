@@ -98,4 +98,12 @@ class Base
 
         return $this;
     }
+
+    public function getBasePriceByID($id): ?float
+    {
+        $getBase = $this->findOneBy(["id" => $id]);
+        $getBasePrice = $getBase->getBasePrice();
+
+        return $getBasePrice;
+    }
 }
