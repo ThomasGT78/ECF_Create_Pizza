@@ -8,13 +8,23 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ pizza.id }}</td>
-            </tr>
-            <tr>
                 <th>Pizza_name</th>
                 <td>{{ pizza.pizzaName }}</td>
             </tr>
+            <tr>
+                <th>Base</th>
+                <td>{{ pizza.pizzaBase.baseName }}</td>
+            </tr>
+            <tr>
+                <th>Taille</th>
+                <td>{{ pizza.pizzaSize.sizeName }}</td>
+            </tr>
+            <tr>
+                <th colspan="2">ingrédients :</th>
+            </tr>
+            {% for ingredient in pizza.pizzaIngredients %}
+                <tr><td>{{ ingredient.ingredientName }}</td></tr>
+            {% endfor %}
         </tbody>
     </table>
 

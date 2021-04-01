@@ -10,7 +10,7 @@
                   rel="stylesheet"
                   integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
                   crossorigin="anonymous">
-
+            <link rel="stylesheet" href="/css/style.css">
         {% endblock %}
 
         {% block javascripts %}
@@ -21,7 +21,18 @@
             </script>
         {% endblock %}
     </head>
+
     <body class="container-fluid">
+
+    <nav>
+        <ul class="nav-bar">
+            <li class="nav-link"><a href="{{ path('pizza_index') }}">Liste Pizza</a></li>
+            <li class="nav-link"><a href="{{ path('pizza_new') }}">Créer Pizza</a></li>
+            <li class="nav-link"><a href="{{ path('ingredient_index') }}">Liste Ingrédients</a></li>
+            <li class="nav-link"><a href="{{ path('ingredient_new') }}">Créer Ingrédient</a></li>
+        </ul>
+    </nav>
+
     <div class="row justify-content-center">
         <div class="col-md-6 mt-3">
             {% block body %}{% endblock %}
